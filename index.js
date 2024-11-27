@@ -3,10 +3,8 @@ const express = require("express");
 require("dotenv").config();
 
 //import routes
-const userRouter = require("./routes/userRouter");
 const riskRatingRoutes = require("./routes/riskRatingRoutes");
 const bodyParser = require("body-parser");
-const userRouter = require("./routes/userRouter");
 const carValueRouter = require("./routes/carValueRouter");
 const quoteRouter = require("./routes/quoteRouter");
 
@@ -19,7 +17,6 @@ app.use(express.json()); //parses incoming JSON
 app.use(bodyParser.json());
 
 // Use the router for a specific path
-app.use("/api", userRouter);
 app.use("/api", carValueRouter);
 app.use("/api/quote", quoteRouter);
 app.use("/api", riskRatingRoutes);
@@ -29,7 +26,6 @@ app.get("/", (req, res) => {
   res.send("hello world");
 });
 
-
 // Set up port
 const PORT = process.env.SERVER_PORT || 4000;
 app.listen(PORT, () => {
@@ -37,4 +33,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-
