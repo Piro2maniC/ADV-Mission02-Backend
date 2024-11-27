@@ -6,7 +6,6 @@ require("dotenv").config();
 const userRouter = require("./routes/userRouter");
 const riskRatingRoutes = require("./routes/riskRatingRoutes");
 const bodyParser = require("body-parser");
-const userRouter = require("./routes/userRouter");
 const carValueRouter = require("./routes/carValueRouter");
 const quoteRouter = require("./routes/quoteRouter");
 
