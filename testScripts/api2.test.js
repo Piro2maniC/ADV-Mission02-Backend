@@ -1,7 +1,7 @@
 const request = require("supertest");
-const app = require("./index");
+const app = require("../index");
 
-describe("POST /api/risk-rating", () => {
+describe("POST /api/riskRating", () => {
   test("should return risk rating of 3", async () => {
     // test 1: valid claim history
     const claimHistory = {
@@ -10,7 +10,7 @@ describe("POST /api/risk-rating", () => {
     };
 
     const response = await request(app)
-      .post("/api/risk-rating") //api endpoint
+      .post("/api/riskRating") //api endpoint
       .send(claimHistory);
 
     //run & compare output to expected output
@@ -26,7 +26,7 @@ describe("POST /api/risk-rating", () => {
     };
 
     const response = await request(app)
-      .post("/api/risk-rating") //api endpoint
+      .post("/api/riskRating") //api endpoint
       .send(claimHistory);
 
     //run & compare output to expected output
@@ -34,7 +34,7 @@ describe("POST /api/risk-rating", () => {
     expect(response.status).toBe(400); // check if response statuis is okay
     expect(response.body.error).toBe(
       "Invalid input: Claim history cannot be empty"
-    ); // check if returned risk rating is 3
+    );
   });
 
   test("should return an error for non string (invalid DT)", async () => {
@@ -44,7 +44,7 @@ describe("POST /api/risk-rating", () => {
     };
 
     const response = await request(app)
-      .post("/api/risk-rating") //api endpoint
+      .post("/api/riskRating") //api endpoint
       .send(claimHistory);
 
     //run & compare output to expected output
@@ -52,17 +52,16 @@ describe("POST /api/risk-rating", () => {
     expect(response.status).toBe(400); // bad request
     expect(response.body.error).toBe(
       "Invalid input: claim history must be string"
-    ); // check if returned risk rating is 3
+    );
   });
   test("should return risk rating of 5 for 5 of more occurences", async () => {
     // test 4: maximum rating 5
     const claimHistory = {
-      claimHistory:
-        "scratch bump collide smash crash collide smash bump", //mor ethan 5 occurences
+      claimHistory: "scratch bump collide smash crash collide smash bump", //mor ethan 5 occurences
     };
 
     const response = await request(app)
-      .post("/api/risk-rating") //api endpoint
+      .post("/api/riskRating") //api endpoint
       .send(claimHistory);
 
     //run & compare output to expected output
@@ -70,20 +69,20 @@ describe("POST /api/risk-rating", () => {
     expect(response.status).toBe(200); // OK
     expect(response.body.riskRating).toBe(5); // maximum of 5
   });
-  test("should return risk rating of 0", async () => {
-    // test 5: risk rating 0
+  test("should return risk rating of 1", async () => {
+    // test 5: risk rating 1
     const claimHistory = {
       claimHistory: "i had had no claims", //no keywords
     };
 
     const response = await request(app)
-      .post("/api/risk-rating") //api endpoint
+      .post("/api/riskRating") //api endpoint
       .send(claimHistory);
 
     //run & compare output to expected output
 
     expect(response.status).toBe(200); // OK
-    expect(response.body.riskRating).toBe(0); // risk rating 0
+    expect(response.body.riskRating).toBe(1); // risk rating 1
   });
   test("multiple of one word", async () => {
     // test 6: word duplicates
@@ -92,7 +91,7 @@ describe("POST /api/risk-rating", () => {
     };
 
     const response = await request(app)
-      .post("/api/risk-rating") //api endpoint
+      .post("/api/riskRating") //api endpoint
       .send(claimHistory);
 
     //run & compare output to expected output

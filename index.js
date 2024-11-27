@@ -3,7 +3,8 @@ const express = require("express");
 require("dotenv").config();
 
 //import routes
-const riskRatingRoutes = require("./routes/riskRatingRoutes");
+const userRouter = require("./routes/userRouter");
+const riskRatingRouter = require("./routes/riskRatingRouter");
 const bodyParser = require("body-parser");
 const carValueRouter = require("./routes/carValueRouter");
 const quoteRouter = require("./routes/quoteRouter");
@@ -19,7 +20,7 @@ app.use(bodyParser.json());
 // Use the router for a specific path
 app.use("/api", carValueRouter);
 app.use("/api/quote", quoteRouter);
-app.use("/api", riskRatingRoutes);
+app.use("/api", riskRatingRouter);
 
 // default route handler
 app.get("/", (req, res) => {

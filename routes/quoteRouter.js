@@ -4,4 +4,4 @@ const quoteController = require("../controllers/quoteController");
 
 router.post("/", quoteController.calculateQuote);
 
-module.exports = router;
+module.exports = router; //for testing
