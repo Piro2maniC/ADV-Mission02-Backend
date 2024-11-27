@@ -1,16 +1,14 @@
 const calculateRiskRating = (claimHistory) => {
-
-//key words to increase risk rating
+  //key words to increase risk rating
   const keywords = ["collide", "bump", "scratch", "smash", "crash"];
 
   //split claim history into words seperated by **any** spaces incl more than one
   const words = claimHistory.toLowerCase().split(/\s+/);
 
-  let riskRating = 0;
+  let riskRating = 1;
 
   //loop through words in claim history
   words.forEach((word) => {
-
     let cleanedWord = "";
     for (let i = 0; i < word.length; i++) {
       if (word[i] >= "a" && word[i] <= "z") {
