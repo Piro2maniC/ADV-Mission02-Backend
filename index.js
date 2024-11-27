@@ -18,7 +18,6 @@ app.use(express.json()); //parses incoming JSON
 app.use(bodyParser.json());
 
 // Use the router for a specific path
-app.use("/api", userRouter);
 app.use("/api", carValueRouter);
 app.use("/api/quote", quoteRouter);
 app.use("/api", riskRatingRouter);
