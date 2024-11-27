@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const userRouter = require("./routes/userRouter");
 const carValueRouter = require("./routes/carValueRouter");
+const quoteRouter = require("./routes/quoteRouter");
 
 // Enable express
 const app = express();
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 // Use the router for a specific path
 app.use("/api", userRouter);
 app.use("/api", carValueRouter);
+app.use("/api/quote", quoteRouter);
 
 // default route handler
 app.get("/", (req, res) => {
