@@ -1,6 +1,12 @@
 const quoteModel = require("../models/quoteModel");
 
 class quotePresenter {
+  /**
+   * Calculates yearly and monthly quotes.
+   * @param {number} carValue - The car's value.
+   * @param {number} riskRating - The risk rating.
+   * @returns {Object} - An object containing yearly and monthly quotes.
+   */
   static processInput(inputJson) {
     // Validation logic
     if (!inputJson) {
