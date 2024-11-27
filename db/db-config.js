@@ -1,6 +1,9 @@
-// //db-config.js
-// const mysql = require("mysql2");
-// const fs = require("fs");
+
+//db-config.js
+const mysql = require("mysql2");
+const fs = require("fs");
+require("dotenv").config();
+
 
 // // Database config
 // const pool = mysql.createPool({
