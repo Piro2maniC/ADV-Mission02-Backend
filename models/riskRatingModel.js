@@ -5,7 +5,7 @@ const calculateRiskRating = (claimHistory) => {
   //split claim history into words seperated by **any** spaces incl more than one
   const words = claimHistory.toLowerCase().split(/\s+/);
 
-  let riskRating = 1;
+  let riskRating = 0;
 
   //loop through words in claim history
   words.forEach((word) => {
@@ -23,6 +23,10 @@ const calculateRiskRating = (claimHistory) => {
 
   if (riskRating > 5) {
     riskRating = 5;
+  }
+
+  if (riskRating === 0) {
+    riskRating = 1;
   }
   return riskRating;
 };

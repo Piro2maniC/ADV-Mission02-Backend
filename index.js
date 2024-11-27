@@ -4,7 +4,7 @@ require("dotenv").config();
 
 //import routes
 const userRouter = require("./routes/userRouter");
-const riskRatingRoutes = require("./routes/riskRatingRoutes");
+const riskRatingRouter = require("./routes/riskRatingRouter");
 const bodyParser = require("body-parser");
 const carValueRouter = require("./routes/carValueRouter");
 const quoteRouter = require("./routes/quoteRouter");
@@ -21,13 +21,12 @@ app.use(bodyParser.json());
 app.use("/api", userRouter);
 app.use("/api", carValueRouter);
 app.use("/api/quote", quoteRouter);
-app.use("/api", riskRatingRoutes);
+app.use("/api", riskRatingRouter);
 
 // default route handler
 app.get("/", (req, res) => {
   res.send("hello world");
 });
-
 
 // Set up port
 const PORT = process.env.SERVER_PORT || 4000;
@@ -36,4 +35,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-
