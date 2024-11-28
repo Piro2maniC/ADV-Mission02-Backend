@@ -3,7 +3,6 @@ const express = require("express");
 require("dotenv").config();
 
 //import routes
-const userRouter = require("./routes/userRouter");
 const riskRatingRouter = require("./routes/riskRatingRouter");
 const bodyParser = require("body-parser");
 const carValueRouter = require("./routes/carValueRouter");
